@@ -13,5 +13,11 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "react/react-in-jsx-scope": 0,
+    strict: true,
+    noUnusedLocals: true,
+    noUnusedParameters: true,
+    noImplicitReturns: true,
+    noFallthroughCasesInSwitch: true,
+    esModuleInterop: true,
   },
 };
