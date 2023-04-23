@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "../node_modules/react-router-dom/dist/index";
 
-import Patients from "./pages/patients";
+import Patients from "./pages/Patients";
 
 const router = createBrowserRouter([
   {
