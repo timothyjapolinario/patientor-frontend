@@ -11,7 +11,7 @@ const Patients = () => {
       setPatients(newPatients);
     };
     fetchPatients();
-  }, []);
+  }, [patients]);
   return (
     <>
       <h1>Patient List</h1>
