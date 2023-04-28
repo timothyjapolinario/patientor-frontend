@@ -5,11 +5,9 @@ import { apiDeployedBaseUrl, apiBaseUrl } from "../../constants";
 const MODE = process.env.NODE_ENV;
 const baseUrl = MODE === "production" ? apiDeployedBaseUrl : apiBaseUrl;
 
-const getAll = async () => {
+export async function getAll() {
   console.log(process.env.NODE_ENV);
   const { data } = await axios.get<Patient[]>(`${baseUrl}/patients`);
   console.log(data);
   return data;
-};
-
-export default { getAll };
+}
