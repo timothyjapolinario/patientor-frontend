@@ -1,0 +1,4 @@
+@import "../scss/custom.scss";
+.patient-content {
+  @include padding-horizontal(4rem);
+}

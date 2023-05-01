@@ -1,11 +1,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
+import "bootstrap/dist/css/bootstrap.min.css";
 import {
   createBrowserRouter,
   RouterProvider,
 } from "../node_modules/react-router-dom/dist/index";
-
+import "./scss/custom.scss";
 import Patients from "./pages/Patients";
+import Header from "./components/Header";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +18,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <h1>Patientor</h1>
+    <Header />
     <RouterProvider router={router} />
   </React.StrictMode>
 );

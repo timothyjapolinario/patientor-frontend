@@ -1,0 +1,6 @@
+$myColor: red;
+
+@mixin padding-horizontal($padding-value) {
+  padding-left: $padding-value;
+  padding-right: $padding-value;
+}

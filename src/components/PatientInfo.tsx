@@ -1,5 +1,4 @@
 import { Patient } from "../types";
-
 interface PatientInfoProps {
   patient: Patient;
 }
@@ -7,9 +6,17 @@ interface PatientInfoProps {
 const PatientInfo = (props: PatientInfoProps) => {
   return (
     <>
-      <h3>name: {props.patient.name}</h3>
-      <h3>gender: {props.patient.gender}</h3>
-      <h3>occupation: {props.patient.occupation}</h3>
+      <tr>
+        <td>
+          <span>{props.patient.name}</span>
+        </td>
+        <td>
+          <span>{props.patient.gender}</span>
+        </td>
+        <td>
+          <span>{props.patient.occupation}</span>
+        </td>
+      </tr>
     </>
   );
 };
