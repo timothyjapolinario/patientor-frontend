@@ -1,5 +1,6 @@
 import { Button, Stack, Table } from "react-bootstrap";
 import { Patient } from "../types";
+import PatientForm from "./PatientForm";
 import PatientInfo from "./PatientInfo";
 import "./PatientTable.scss";
 interface PatientTableProps {
@@ -10,7 +11,7 @@ const PatientTable = (props: PatientTableProps) => {
     <>
       <Stack direction="horizontal" gap={3}>
         <h1>Patient List</h1>
-        <Button>Add Patient</Button>
+        <PatientForm />
       </Stack>
       <Table className="patient-table">
         <thead>

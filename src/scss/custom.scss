@@ -4,3 +4,8 @@ $myColor: red;
   padding-left: $padding-value;
   padding-right: $padding-value;
 }
+
+@mixin margin-vertical($margin-value) {
+  margin-top: $margin-value;
+  margin-bottom: $margin-value;
+}
