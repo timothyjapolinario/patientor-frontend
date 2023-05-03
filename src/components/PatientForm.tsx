@@ -13,6 +13,7 @@ const PatientForm = (props: PatientFormProps) => {
     dateOfBirth: "",
     gender: Gender.Male,
     occupation: "",
+    ssn: "",
   });
 
   const [show, setShow] = useState(false);
@@ -23,6 +24,11 @@ const PatientForm = (props: PatientFormProps) => {
   const handleChangeName = (e: ReactChangeEvent) => {
     const name = e.target.value;
     setPatientForm({ ...patientForm, name });
+  };
+
+  const handleChangeSSN = (e: ReactChangeEvent) => {
+    const ssn = e.target.value;
+    setPatientForm({ ...patientForm, ssn });
   };
 
   const handleChangeGender = (e: ReactChangeEvent) => {
@@ -87,6 +93,15 @@ const PatientForm = (props: PatientFormProps) => {
                 type="input"
                 onChange={(e: ReactChangeEvent) => {
                   handleChangeOccupation(e);
+                }}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="formBasicSSN">
+              <Form.Label>SSN</Form.Label>
+              <Form.Control
+                type="input"
+                onChange={(e: ReactChangeEvent) => {
+                  handleChangeSSN(e);
                 }}
               ></Form.Control>
             </Form.Group>
