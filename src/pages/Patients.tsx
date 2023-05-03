@@ -11,7 +11,6 @@ const Patients = () => {
       setPatients(newPatients);
     };
     fetchPatients();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addNewPatient = (newPatient: Patient) => {
