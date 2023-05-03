@@ -12,3 +12,7 @@ export interface Patient {
   gender: Gender;
   occupation: string;
 }
+
+export type ReactChangeEvent = React.ChangeEvent<HTMLInputElement>;
+
+export type PatientFormValue = Omit<Patient, "id">;

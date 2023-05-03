@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "start": "vite preview"
+    "start": "vite preview",
+    "test": "vitest"
   },
   "dependencies": {
+    "@testing-library/user-event": "^14.4.3",
     "@types/axios": "^0.14.0",
     "@types/node": "^18.16.0",
     "@types/react-router-dom": "^5.3.3",

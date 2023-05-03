@@ -8,16 +8,19 @@ const Patients = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       const newPatients = await getAll();
-      console.log(patients);
       setPatients(newPatients);
     };
     fetchPatients();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const addNewPatient = (newPatient: Patient) => {
+    setPatients(patients.concat(newPatient));
+  };
   return (
     <>
       <div className="patient-content">
-        <PatientTable patientList={patients} />
+        <PatientTable patientList={patients} addNewPatient={addNewPatient} />
       </div>
     </>
   );

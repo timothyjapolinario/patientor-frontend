@@ -11,6 +11,14 @@ export async function getAll() {
 }
 
 export async function uploadPatient(patient: PatientFormValue) {
-  const { data } = await axios.post<Patient>(`${baseUrl}/patients`, patient);
-  return data;
+  const result = await axios
+    .post<Patient>(`${baseUrl}/patients`, patient)
+    .catch((error) => {
+      console.log("Error uploading patient info", error);
+    });
+
+  if (result) {
+    return result.data;
+  }
+  return;
 }

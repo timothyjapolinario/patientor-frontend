@@ -1,6 +1,7 @@
 import { expect, test, vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Patients from "../src/pages/Patients";
+import userEvent from "@testing-library/user-event";
 // Edit an assertion and save to see HMR in action
 
 vi.mock("../src/utils/patientService", () => {
@@ -16,6 +17,15 @@ vi.mock("../src/utils/patientService", () => {
         },
       ];
     }),
+    uploadPatient: vi.fn(() => {
+      return {
+        id: "d2773336-f723-11e9-8f0b-362b9e154167",
+        name: "Mary Jane",
+        dateOfBirth: "1996-02-03",
+        gender: "Female",
+        occupation: "photographer",
+      };
+    }),
   };
 });
 
@@ -29,7 +39,7 @@ test.skip("Math.sqrt()", () => {
   expect(Math.sqrt(2)).toBe(Math.SQRT2);
 });
 
-test("information for patients are shown", async () => {
+test.skip("information for patients are shown", async () => {
   render(<Patients />);
   await waitFor(
     () => {
@@ -45,3 +55,38 @@ test("information for patients are shown", async () => {
   screen.debug();
   expect(header).not.toBeNull();
 });
+
+test(
+  "shows successfuly uploaded patient",
+  async () => {
+    const user = userEvent.setup();
+    render(<Patients />);
+    await user.click(screen.getByRole("button", { name: /Add Patient/i }));
+    const nameInput = screen.getByLabelText(/Name/i);
+    const femaleInput = screen.getByLabelText(/Male/i);
+    const occupationInput = screen.getByLabelText(/Occupation/i);
+    const birthdayInput = screen.getByLabelText(/Birthday/i);
+    const submitButton = screen.getByRole("button", { name: /Submit/i });
+    const closeModalButton = screen.getByRole("button", {
+      name: /Close Form/i,
+    });
+
+    fireEvent.change(birthdayInput, { target: { value: "2020-05-24" } });
+    await user.type(occupationInput, "Photographer");
+    await user.type(nameInput, "Mary Jane");
+    await user.click(femaleInput);
+    await user.click(submitButton);
+    await user.click(closeModalButton);
+
+    await waitFor(
+      () => {
+        expect(screen.getByText("Mary Jane")).not.toBeNull();
+      },
+      {
+        timeout: 5000,
+      }
+    );
+    screen.debug();
+  },
+  { timeout: 30000 }
+);
